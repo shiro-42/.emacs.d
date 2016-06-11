@@ -1,0 +1,3 @@
+(setq my-lisp-directory (expand-file-name "~/emacs-lisp/"))
+
+(add-to-list 'load-path my-lisp-directory)
