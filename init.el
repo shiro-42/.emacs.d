@@ -8,17 +8,20 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")))
 
-;;#################################################################
-;;             nice footer bar
-;;##################################################################
-(setq sublimity-scroll-weight 10
-      sublimity-scroll-drift-length 5)
-(setq sublimity-map-size 20)
-(setq sublimity-map-fraction 0.3)
-(setq sublimity-map-text-scale -7)
-(setq sublimity-attractive-centering-width 110)
-(sublimity-mode 1)
 
+;;(add-hook 'web-mode-hook  'my-web-mode-hook)
+
+;;#################################################################
+;;             sublimity
+;;##################################################################
+;;(setq sublimity-scroll-weight 10
+;;      sublimity-scroll-drift-length 5)
+;;(setq sublimity-map-size 20)
+;;(setq sublimity-map-fraction 0.3)
+;;(setq sublimity-map-text-scale -7)
+;;(setq sublimity-attractive-centering-width 110)
+;;(sublimity-mode 1)
+;;
 
 ;;#################################################################
 ;;             linter
@@ -113,37 +116,19 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(tabbar-button ((t (:inherit tabbar-default :background "#3F51B5" :foreground "white"))))
+ '(tabbar-button ((t (:inherit tabbar-default :background "#c62d5b" :foreground "#c62d5b"))))
  '(tabbar-button-highlight ((t (:inherit tabbar-default))))
- '(tabbar-default ((t (:inherit variable-pitch :background "#3F51B5" :foreground "#7986CB" :weight bold))))
+ '(tabbar-default ((t (:inherit variable-pitch :background "#c62d5b" :foreground "#c62d5b" :weight bold))))
  '(tabbar-highlight ((t (:underline t))))
- '(tabbar-selected ((t (:inherit tabbar-default :background "#7986CB" :foreground "white"))))
+ '(tabbar-selected ((t (:inherit tabbar-default :background "#FC6291" :foreground "white"))))
  '(tabbar-separator ((t (:inherit tabbar-default :background "#D50000"))))
- '(tabbar-unselected ((t (:inherit tabbar-default :background "#3F51B5" :foreground "#DDDDDD")))))
+ '(tabbar-unselected ((t (:inherit tabbar-default :background "#c62d5b" :foreground "#DDDDDD")))))
 
 ;; tern js
 ;;(add-to-list 'load-path "/usr/local/lib/node_modules/tern/emacs/")
 ;;(autoload 'tern-mode "tern.el" nil t)
 
 (setq js2-highlight-level 4)
-
-(defun pbcopy ()
-  (interactive)
-  (call-process-region (point) (mark) "pbcopy")
-  (setq deactivate-mark t))
-
-(defun pbpaste ()
-  (interactive)
-  (call-process-region (point) (if mark-active (mark) (point)) "pbpaste" t t))
-
-(defun pbcut ()
-  (interactive)
-  (pbcopy)
-  (delete-region (region-beginning) (region-end)))
-
-(global-set-key (kbd "<f13> c") 'pbcopy)
-(global-set-key (kbd "<f13> v") 'pbpaste)
-(global-set-key (kbd "<f13> x") 'pbcut)
 
 ;;color everywhere <3
 (add-hook 'after-init-hook 'global-color-identifiers-mode)
@@ -152,8 +137,6 @@
 (setq fiplr-root-markers '(".git" ".svn"))
 (setq fiplr-ignored-globs '((directories (".git" ".svn" "tmp" "node_modules" "coverage" "build" "platforms" ".idea"))
                             (files ("*.jpg" "*.png" "*.zip" "*~"))))
-
-(global-set-key (kbd "C-p") 'fiplr-find-file)
 
 ;;change backup directory (stop poluting git repos)
 (setq backup-directory-alist
@@ -171,17 +154,6 @@
 (set-face-attribute 'font-lock-keyword-face nil :weight 'bold)
 (set-face-attribute 'font-lock-builtin-face nil :weight 'bold)
 (set-face-attribute 'font-lock-preprocessor-face nil :weight 'bold)
-
-;;expend-region
-(require 'expand-region)
-(global-set-key (kbd "C-d") 'er/expand-region)
-
-;;expend-line
-(global-set-key (kbd "C-l") 'turn-on-expand-line-mode)
-
-;;multiline-cursors
-(require 'multiple-cursors)
-(global-set-key (kbd "C-x d") 'mc/mark-next-like-this)
 
 ;;autocomplete
 (ac-config-default)
@@ -219,7 +191,8 @@
 (require 'smartparens-config)
 (add-hook 'web-mode #'smartparens-mode)
 
-(wrap-region-mode t)
+(wrap-region-global-mode t)
+;;(add-hook 'web-mode #'wrap-region-mode)
 
 ;;alway enable line numbers
 ;;(global-linum-mode 1)
@@ -230,20 +203,17 @@
 ;;##################################################################
 (require 'tabbar)
 
-(defun tabbar-buffer-groups-by-dir ()
-  "Put all files in the same directory into the same tab bar"
-  (with-current-buffer (current-buffer)
-    (let ((dir (expand-file-name default-directory)))
-      (cond ;; assign group name until one clause succeeds, so the order is important
-       ((eq major-mode 'dired-mode)
-        (list "Dired"))
-       ((memq major-mode
-              '(help-mode apropos-mode Info-mode Man-mode))
-        (list "Help"))
-       ((string-match-p "\*.*\*" (buffer-name))
-        (list "Misc"))
-       (t (list dir))))))
-(setq tabbar-background-color "#3F51B5") ;; the color of the tabbar background
+(defun my-tabbar-buffer-groups () ;; customize to show all normal files in one group
+  "Returns the name of the tab group names the current buffer belongs to.
+ There are two groups: Emacs buffers (those whose name starts with '*', plus
+ dired buffers), and the rest.  This works at least with Emacs v24.2 using
+ tabbar.el v1.7."
+  (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
+              ((eq major-mode 'dired-mode) "emacs")
+              (t "user"))))
+(setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
+
+(setq tabbar-background-color "#c62d5b") ;; the color of the tabbar background
 
 (setq tabbar-cycle-scope (quote tabs))
 (setq tabbar-use-images t)
@@ -263,15 +233,9 @@
 (add-hook 'after-save-hook 'ztl-modification-state-change)
 (add-hook 'first-change-hook 'ztl-on-buffer-modification)
 (tabbar-mode)
-(global-set-key [C-left] 'tabbar-backward)
-(global-set-key [C-right] 'tabbar-forward)
-
 
 ;;disable menu-bar
 (menu-bar-mode -1)
-
-;;kill buffer
-(global-set-key (kbd "C-w") 'kill-buffer)
 
 ;;#################################################################
 ;;             nice footer bar
@@ -291,3 +255,57 @@
 (setq sml/theme 'powerline)
 (sml/setup)
 (setq sml/no-confirm-load-theme t)
+
+
+;;#################################################################
+;;             keymap
+;;##################################################################
+;; navigate between tabs
+(global-set-key [C-left] 'tabbar-backward)
+(global-set-key [C-right] 'tabbar-forward)
+;; kill buffer
+(global-set-key (kbd "C-w") 'kill-this-buffer)
+(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
+
+(defun pbcopy ()
+  (interactive)
+  (call-process-region (point) (mark) "pbcopy")
+  (setq deactivate-mark t))
+
+(defun pbpaste ()
+  (interactive)
+  (call-process-region (point) (if mark-active (mark) (point)) "pbpaste" t t))
+
+(defun pbcut ()
+  (interactive)
+  (pbcopy)
+  (delete-region (region-beginning) (region-end)))
+
+(global-set-key (kbd "<f13> c") 'pbcopy)
+(global-set-key (kbd "<f13> v") 'pbpaste)
+(global-set-key (kbd "<f13> x") 'pbcut)
+
+(global-set-key (kbd "C-p") 'fiplr-find-file)
+
+;;expend-region
+(require 'expand-region)
+(global-set-key (kbd "C-d") 'er/expand-region)
+
+;;expend-line
+(global-set-key (kbd "C-l") 'turn-on-expand-line-mode)
+
+;;multiline-cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-x C-d") 'mc/mark-next-like-this)
+
+(global-set-key (kbd "M-Q") 'kill-emacs)
+
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+(add-hook 'gfm-mode-hook 'writeroom-mode)
