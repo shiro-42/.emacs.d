@@ -1,156 +1,268 @@
-((("x" .
-   [2])
-  ("powerline-vim-theme" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("require" .
-   [3 0 0 0 0 0 0])
-  (":foreground" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  (":background" .
-   [0 0 0 0 0 0 0 0 0 1 0])
-  ("git-gutter-fr:modified" .
-   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("userShipper" .
-   [0 0 0 0 0 0 0 1 0 0 0])
-  ("SHIPPED_STATES" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("STATES" .
-   [1 0 0 0 0 0])
-  ("CARRIER_IN_TRANSIT" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("SHIPPED" .
-   [1 0 0 0 0 0 0])
-  ("type" .
-   [2 0 0 0])
-  ("isConnected" .
-   [0 0 0 0 0 1 0 0 0 0 0])
-  ("$stateParams" .
-   [0 0 0 0 0 0 0 0 1 0 0 0])
-  ("$uibModal" .
+((("forward-char" .
+   [0 0 0 0 0 0 0 0 0 0 1 0])
+  ("backward-char" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("next-line" .
    [0 0 0 0 0 0 1 0 0])
-  ("$state" .
-   [1 0 0 0 0 0])
-  ("session" .
-   [1 0 0 0 1 0 0])
-  ("onEnter" .
-   [0 0 0 0 1 0 0])
-  ("documentTitle" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0])
-  ("url" .
-   [1 0 0])
-  ("state" .
-   [1 0 0 0 0])
-  ("with" .
-   [2 0 0 0])
-  ("canReturn" .
-   [0 0 0 1 0 0 0 0 0])
-  ("isCountrySupported" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
-  ("includes" .
-   [2 0 0 0 0 0 0 0])
-  ("country" .
-   [2 0 0 0 1 0 0])
-  ("address" .
-   [2 0 0 0 0 0 0])
-  ("parcel" .
-   [20 0 0 0 0 0])
-  ("Parcel" .
-   [1 0 0 0 0 1])
-  ("Function" .
-   [0 0 0 0 0 0 0 3])
-  ("function" .
-   [0 0 0 0 1 0 0 0])
-  ("const" .
-   [6 0 0 0 0])
-  ("isReturn" .
-   [0 0 0 0 0 0 1 0])
-  ("active" .
-   [2 0 0 0 0 0])
-  ("LABEL_STATES" .
-   [0 0 1 0 0 0 0 0 0 0 0 0])
-  ("ERROR" .
-   [0 0 1 0 0])
-  ("labelStatus" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  ("line" .
+  ("previous-line" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("evil-normal-state-map" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("evil-normal-state" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("key-translation-map" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("define-key" .
+   [0 0 0 0 0 0 0 0 0 1])
+  ("redo" .
+   [0 0 0 1])
+  ("flycheck-list-errors" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("noop" .
    [1 0 0 0])
-  ("prog-mode-hook" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("electric" .
-   [1 0 0 0 0 0 0 0])
-  ("electric-pair" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0])
-  ("save" .
-   [1 0 0 0])
-  ("in" .
-   [1 0])
-  ("file" .
-   [1 0 0 0])
-  ("html-mode" .
-   [0 0 0 0 1 0 0 0 0])
-  ("mo" .
-   [3 0])
-  ("when" .
-   [1 0 0 0])
-  ("one" .
-   [0 0 1])
-  ("div" .
-   [1 0 0])
-  ("ng-if" .
-   [1 0 0 0 0])
-  ("web-mode" .
-   [2 0 0 0 0 0 0 0])
-  ("region" .
-   [1 0 0 0 0 0])
-  ("smartparens-mode" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("method" .
-   [1 0 0 0 0 0])
-  ("parcelId" .
-   [1 0 0 0 0 0 0 0])
-  ("toggleSelfReturn" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("selfReturnActivated" .
-   [0 0 0 0 0 0 1 2 0 0 1 0 0 0 0 0 0 0 0])
-  ("true" .
-   [2 0 0 0])
-  ("only" .
-   [2 0 0 0])
-  ("async" .
-   [1 0 0 0 0])
-  ("await" .
-   [1 0 0 0 0])
-  ("expect" .
-   [1 0 0 0 0 0])
-  ("result" .
-   [1 0 0 0 0 0])
-  ("anotherShipper" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("let" .
-   [2 0 0])
-  ("false" .
-   [1 0 0 0 0])
-  ("toggle" .
-   [1 0 0 0 0 0])
-  ("global-git-gutter+-mode" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
-  ("git-gutter:linum-setup" .
+  ("mc/mark-previous-like-this" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("mc/mark-next-like-this" .
    [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
-  ("git-gutter-mode" .
-   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("git-gutter" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("web-mode-hook" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("window" .
+  ("expand-region" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("save-buffers-kill-emacs" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("new-file" .
+   [0 0 0 0 0 1 0 0])
+  ("tabbar-forward" .
+   [1 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("save-buffer" .
+   [0 0 0 0 0 1 1 0 0 0 0])
+  ("evil-commentary" .
+   [1 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("sublimity-map-show" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("sublimity" .
+   [0 0 0 0 0 0 0 0 1])
+  (":" .
+   [1])
+  ("delete-other-windows" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("pbpaste" .
+   [0 0 0 1 0 0 0])
+  ("pbcut" .
+   [0 0 0 1 0])
+  ("fiplr-find-file" .
+   [0 0 0 0 0 0 1 0 1 0 0 0 0 0 0])
+  ("markdown-mode" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("kill-emacs" .
+   [2 0 0 0 0 0 1 0 0 0])
+  ("writeroom-width" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("powerline" .
+   [1 0 0 0 0 0 0 0 0])
+  ("sml/apply-theme" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("kill-buffer" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("buffer" .
    [1 0 0 0 0 0])
   ("kill" .
    [1 0 0 0])
-  ("buffer" .
+  ("window" .
    [1 0 0 0 0 0])
-  ("kill-buffer" .
-   [2 0 0 0 0 0 0 0 0 0 0])
-  ("sml/apply-theme" .
-   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
-  ("powerline" .
-   [1 0 0 0 0 0 0 0 0])))
+  ("web-mode-hook" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("git-gutter" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("git-gutter-mode" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("git-gutter:linum-setup" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("global-git-gutter+-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("toggle" .
+   [1 0 0 0 0 0])
+  ("false" .
+   [1 0 0 0 0])
+  ("let" .
+   [2 0 0])
+  ("anotherShipper" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("result" .
+   [1 0 0 0 0 0])
+  ("expect" .
+   [1 0 0 0 0 0])
+  ("await" .
+   [1 0 0 0 0])
+  ("async" .
+   [1 0 0 0 0])
+  ("only" .
+   [2 0 0 0])
+  ("true" .
+   [2 0 0 0])
+  ("selfReturnActivated" .
+   [0 0 0 0 0 0 1 2 0 0 1 0 0 0 0 0 0 0 0])
+  ("toggleSelfReturn" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("parcelId" .
+   [1 0 0 0 0 0 0 0])
+  ("method" .
+   [1 0 0 0 0 0])
+  ("smartparens-mode" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("region" .
+   [1 0 0 0 0 0])
+  ("web-mode" .
+   [2 0 0 0 0 0 0 0])
+  ("ng-if" .
+   [1 0 0 0 0])
+  ("div" .
+   [1 0 0])
+  ("one" .
+   [0 0 1])
+  ("when" .
+   [1 0 0 0])
+  ("mo" .
+   [3 0])
+  ("html-mode" .
+   [0 0 0 0 1 0 0 0 0])
+  ("file" .
+   [1 0 0 0])
+  ("in" .
+   [1 0])
+  ("save" .
+   [1 0 0 0])
+  ("electric-pair" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("electric" .
+   [1 0 0 0 0 0 0 0])
+  ("prog-mode-hook" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("line" .
+   [1 0 0 0])
+  ("labelStatus" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("ERROR" .
+   [0 0 1 0 0])
+  ("LABEL_STATES" .
+   [0 0 1 0 0 0 0 0 0 0 0 0])
+  ("active" .
+   [2 0 0 0 0 0])
+  ("isReturn" .
+   [0 0 0 0 0 0 1 0])
+  ("const" .
+   [6 0 0 0 0])
+  ("function" .
+   [0 0 0 0 1 0 0 0])
+  ("Function" .
+   [0 0 0 0 0 0 0 3])
+  ("Parcel" .
+   [1 0 0 0 0 1])
+  ("parcel" .
+   [23 0 0 0 0 0])
+  ("address" .
+   [2 0 0 0 0 0 0])
+  ("country" .
+   [2 0 0 0 1 0 0])
+  ("includes" .
+   [2 0 0 0 0 0 0 0])
+  ("isCountrySupported" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("canReturn" .
+   [0 0 0 1 0 0 0 0 0])
+  ("with" .
+   [2 0 0 0])
+  ("state" .
+   [1 0 0 0 0])
+  ("url" .
+   [1 0 0])
+  ("documentTitle" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("onEnter" .
+   [0 0 0 0 1 0 0])
+  ("session" .
+   [1 0 0 0 1 0 0])
+  ("$state" .
+   [1 0 0 0 0 0])
+  ("$uibModal" .
+   [0 0 0 0 0 0 1 0 0])
+  ("$stateParams" .
+   [0 0 0 0 0 0 0 0 1 0 0 0])
+  ("isConnected" .
+   [0 0 0 0 0 1 0 0 0 0 0])
+  ("type" .
+   [2 0 0 0])
+  ("SHIPPED" .
+   [1 0 0 0 0 0 0])
+  ("CARRIER_IN_TRANSIT" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("STATES" .
+   [1 0 0 0 0 0])
+  ("SHIPPED_STATES" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("userShipper" .
+   [0 0 0 0 0 0 0 1 0 0 0])
+  ("git-gutter-fr:modified" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":background" .
+   [0 0 0 0 0 0 0 0 0 1 0])
+  (":foreground" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("require" .
+   [4 0 0 0 0 0 0])
+  ("powerline-vim-theme" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("x" .
+   [2])
+  ("writeroom-mode" .
+   [0 0 0 0 0 0 1 1 0 0 0 0 0 1])
+  ("writeroom-mode-set-explicitly" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("wrap-region-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("wrap-region-global-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("global-evil-mc-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("kill-this-buffer" .
+   [0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0])
+  ("CREATED" .
+   [1 0 0 0 0 0 0])
+  ("direx:jump-to-directory" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("evil-comment" .
+   [0 0 0 0 0 0 0 0 0 0 0 1])
+  ("evil-commentary-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("find" .
+   [1 0 0 0])
+  ("find-file" .
+   [1 0 0 0 0 0 0 0 0])
+  ("mark-whole-buffer" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("select-current-line" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("wrap-text" .
+   [1 0 0 0 0 0 0 0 0])
+  ("wrap-double-quote" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("emacs" .
+   [1 0 0 0 0])
+  ("--daemon" .
+   [1 0 0 0 0 0 0 0])
+  ("evil-leader/set-key" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("minibuffer-keyboard-quit" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("evil-undo-" .
+   [0 0 0 0 0 0 0 0 0 1])
+  ("undo" .
+   [0 0 1 1])
+  ("powerline-center-theme" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("evil-window-right" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("evil-window-left" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("labelUrl" .
+   [2 0 0 0 0 0 0 1])
+  ("body" .
+   [3 0 0 0])))

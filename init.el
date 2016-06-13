@@ -1,27 +1,98 @@
-(package-initialize)
-(add-to-list 'load-path "/Users/nbeydon/.emacs.d/vendor/use-package/")
+;; for cask dependencies
+;;(require 'cask "/Users/nbeydon/.cask/cask.el")
+;;(cask-initialize)
+
+;;emacs config
+(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
+
+;; package section
+(package-initialize) (add-to-list 'load-path "/Users/nbeydon/.emacs.d/vendor/use-package/")
 (require 'use-package)
 (require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.org/packages/")))
+;;#################################################################
+;;             My Space Emacs config
+;;##################################################################
+;; type space for anything
+;; nemotechnique
 
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")))
+;;#################################################################
+;;             EVIL
+;;##################################################################
 
+;; comments
+;; (evil-commentary-mode)
 
-;;(add-hook 'web-mode-hook  'my-web-mode-hook)
+;; multicursor for evil
+(add-to-list 'load-path "/Users/nbeydon/.emacs.d/vendor/evil-mc/")
+(require 'evil-mc)
+(global-evil-mc-mode  1) ;; enable
+
+;; leader for evil
+(add-to-list 'load-path "/Users/nbeydon/.emacs.d/vendor/evil-leader/")
+(require 'evil-leader)
+(global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")
+
+(evil-leader/set-key "w o" 'delete-other-windows)
+(evil-leader/set-key "w w" 'other-window)
+
+;; q quit
+(evil-leader/set-key "q s" 'save-buffers-kill-emacs)
+(evil-leader/set-key "q q" 'kill-emacs)
+
+;; b buffer
+(evil-leader/set-key "b <left>" 'tabbar-backward)
+(evil-leader/set-key "b <right>" 'tabbar-forward)
+(evil-leader/set-key "b k" 'kill-this-buffer)
+
+;; f file
+(evil-leader/set-key "f t" 'direx:jump-to-directory)
+(evil-leader/set-key "f s" 'save-buffer)
+(evil-leader/set-key "f f" 'fiplr-find-file)
+(evil-leader/set-key "f n" 'find-file)
+
+;; selection
+(evil-leader/set-key "s a" 'mark-whole-buffer)
+(defun select-current-line ()
+  "Select the current line"
+  (interactive)
+  (end-of-line) ; move to end of line
+    (set-mark (line-beginning-position)))
+(evil-leader/set-key "s l" 'select-current-line)
+(evil-leader/set-key "s r" 'expand-region)
+(evil-leader/set-key "s n" 'mc/mark-next-like-this)
+(evil-leader/set-key "s p" 'mc/mark-previous-like-this)
+
+;; find word
+(evil-leader/set-key "F" 'ag)
+
+;;l is linter
+(evil-leader/set-key "l l" 'flycheck-list-errors)
+
+(require 'evil)
+(evil-mode 1)
+;;(define-key evil-normal-state-map "u" 'previous-line)
+;;(define-key evil-normal-state-map "j" 'next-line)
+;;(define-key evil-normal-state-map "h" 'backward-char)
+;;(define-key evil-normal-state-map "k" 'forward-char)
 
 ;;#################################################################
 ;;             sublimity
 ;;##################################################################
-;;(setq sublimity-scroll-weight 10
-;;      sublimity-scroll-drift-length 5)
-;;(setq sublimity-map-size 20)
-;;(setq sublimity-map-fraction 0.3)
-;;(setq sublimity-map-text-scale -7)
-;;(setq sublimity-attractive-centering-width 110)
-;;(sublimity-mode 1)
-;;
+(add-to-list 'load-path "/Users/nbeydon/.emacs.d/vendor/sublimity/")
+(require 'sublimity) (require 'sublimity-scroll) (require 'sublimity-attractive)
+(sublimity-mode 1)
+
+;;#################################################################
+;;             AG
+;;##################################################################
+;;(add-to-list 'load-path "/Users/nbeydon/.emacs.d/vendor/ag/")
+(require 'ag)
+
+
+;;(add-hook 'web-mode-hook  'my-web-mode-hook)
 
 ;;#################################################################
 ;;             linter
@@ -110,7 +181,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "01ce486c3a7c8b37cf13f8c95ca4bb3c11413228b35676025fdf239e77019ea1" default))))
+    ("04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "a802c77b818597cc90e10d56e5b66945c57776f036482a033866f5f506257bca" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "a0feb1322de9e26a4d209d1cfa236deaf64662bb604fa513cca6a057ddf0ef64" "01ce486c3a7c8b37cf13f8c95ca4bb3c11413228b35676025fdf239e77019ea1" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -256,6 +327,30 @@
 (sml/setup)
 (setq sml/no-confirm-load-theme t)
 
+;;#################################################################
+;;             Echap to kill action
+;;##################################################################
+;; esc quits
+(defun minibuffer-keyboard-quit ()
+    "Abort recursive edit.
+In Delete Selection mode, if the mark is active, just deactivate it;
+then it takes a second \\[keyboard-quit] to abort the minibuffer."
+    (interactive)
+    (if (and delete-selection-mode transient-mark-mode mark-active)
+        (setq deactivate-mark  t)
+      (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+      (abort-recursive-edit)))
+(define-key evil-normal-state-map [escape] 'keyboard-quit)
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+(global-set-key [escape] 'evil-exit-emacs-state)
+
+;; dont move back cursor
+(setq evil-move-cursor-back nil)
 
 ;;#################################################################
 ;;             keymap
@@ -264,7 +359,6 @@
 (global-set-key [C-left] 'tabbar-backward)
 (global-set-key [C-right] 'tabbar-forward)
 ;; kill buffer
-(global-set-key (kbd "C-w") 'kill-this-buffer)
 (global-set-key (kbd "C-x C-j") 'direx:jump-to-directory)
 
 (defun pbcopy ()
@@ -283,10 +377,12 @@
 
 (global-set-key (kbd "<f13> c") 'pbcopy)
 (global-set-key (kbd "<f13> v") 'pbpaste)
+(define-key evil-normal-state-map (kbd "<f13> v") #'pbpaste)
 (global-set-key (kbd "<f13> x") 'pbcut)
 
-(global-set-key (kbd "C-p") 'fiplr-find-file)
-
+(global-set-key (kbd "<f13> z") 'fiplr-find-file)
+(eval-after-load 'evil-ex
+    '(evil-ex-define-cmd "f[uzzy]" 'fiplr-find-file))
 ;;expend-region
 (require 'expand-region)
 (global-set-key (kbd "C-d") 'er/expand-region)
@@ -299,6 +395,14 @@
 (global-set-key (kbd "C-x C-d") 'mc/mark-next-like-this)
 
 (global-set-key (kbd "M-Q") 'kill-emacs)
+(global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-y") 'redo)
+
+;;(global-set-key (kbd "C-u") 'previous-line)
+;;(global-set-key (kbd "C-j") 'next-line)
+;;(global-set-key (kbd "C-h") 'evil-window-left)
+;;(global-set-key (kbd "C-k") 'evil-window-right)
+;;
 
 (use-package markdown-mode
   :ensure t
@@ -309,3 +413,29 @@
   :init (setq markdown-command "multimarkdown"))
 
 (add-hook 'gfm-mode-hook 'writeroom-mode)
+
+(setq mc/cmds-to-run-for-all
+      '(
+        evil-append-line
+        evil-backward-WORD-begin
+        evil-backward-word-begin
+        evil-delete-char
+        evil-delete-line
+        evil-digit-argument-or-evil-beginning-of-line
+        evil-emacs-state
+        evil-end-of-line
+        evil-force-normal-state
+        evil-forward-WORD-begin
+        evil-forward-WORD-end
+        evil-forward-word-begin
+        evil-forward-word-end
+        evil-insert
+        evil-next-line
+        evil-normal-state
+        evil-previous-line
+                ))
+
+;; add highlighting for jade files
+(require 'sws-mode)
+(require 'jade-mode)
+(add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))

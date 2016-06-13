@@ -1,0 +1,8 @@
+;;  Positionner  la variable  `my-lisp-directory'  sur  une chaine  de
+;; caractères contenant le  chemin complet du repertoire contenant les
+;; fichiers lisp.
+(setq my-lisp-directory (expand-file-name "~/emacs-lisp/"))
+
+;;  Ajouter ce  répertoire à  la liste  des répertoires  contenant les
+;; bibliothèques :
+(add-to-list 'load-path my-lisp-directory)
